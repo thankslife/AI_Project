@@ -27,7 +27,7 @@ y_ = tf.placeholder(dtype=tf.float32, shape=(None, 10))
 saver = tf.train.Saver()
 
 with tf.Session() as sess:
-    saver.restore(sess, "./my_model_final.ckpt")
+    saver.restore(sess, "./my_model_final.ckpt")#把路径下面所有的session的数据加载进来 y y_head
 
     # 评估
     # tf.argmax()是一个从tensor中寻找最大值的序号，tf.argmax就是求各个预测的数字中概率最大的那一个

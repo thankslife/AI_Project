@@ -40,7 +40,7 @@ train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 # 初始化变量
 init = tf.global_variables_initializer()
 # 创建Saver()节点
-saver = tf.train.Saver()
+saver = tf.train.Saver()#在运算之前，初始化之后
 
 n_epoch = 1000
 
@@ -48,11 +48,12 @@ with tf.Session() as sess:
     sess.run(init)
     for epoch in range(n_epoch):
         if epoch % 100 == 0:
-            save_path = saver.save(sess, "./my_model.ckpt")
+            save_path = saver.save(sess, "./my_model.ckpt")#每跑100次save一次模型，可以保证容错性
+            #直接保存session即可。
 
         batch_xs, batch_ys = my_mnist.train.next_batch(100)
         sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
 
     best_theta = W.eval()
-    save_path = saver.save(sess, "./my_model_final.ckpt")
+    save_path = saver.save(sess, "./my_model_final.ckpt")#保存最后的模型，session实际上保存的上面所有的数据
 

@@ -13,8 +13,8 @@ A = tf.placeholder(tf.float32, shape=(None, 3))
 B = A + 5
 
 with tf.Session() as sess:
-    B_val_1 = B.eval(feed_dict={A: [[1, 2, 3]]})
-    B_val_2 = B.eval(feed_dict={A: [[4, 5, 6], [7, 8, 9]]})
+    B_val_1 = B.eval(feed_dict={A: [[1, 2, 3]]})#等价于session.run（B）一行数据三个维度
+    B_val_2 = B.eval(feed_dict={A: [[4, 5, 6], [7, 8, 9]]})#两行数据，三个维度
 
 print(B_val_1)
 print(B_val_2)

@@ -11,13 +11,13 @@ def relu(X):
 
 n_features = 3
 X = tf.placeholder(tf.float32, shape=(None, n_features), name='X')
-relus = [relu(X) for i in range(5)]
-output = tf.add_n(relus, name='output')
+relus = [relu(X) for i in range(5)]#list生成器
+output = tf.add_n(relus, name='output')#将集合中的元素加和在一起
 
 init = tf.global_variables_initializer()
 
 with tf.Session() as sess:
     sess.run(init)
-    result = output.eval(feed_dict={X: [[1, 2, 3], [4, 5, 6], [7, 8, 9]]})
+    result = output.eval(feed_dict={X: [[1, 2, 3], [4, 5, 6], [7, 8, 9]]})#把里面placehoder的值传进来
     print(result)
 

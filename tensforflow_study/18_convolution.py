@@ -24,7 +24,7 @@ filters_test[3, :, :, 1] = 1  # 水平
 X = tf.placeholder(tf.float32, shape=(None, height, width, channels))
 # strides=[1, 2, 2, 1] 中第一最后一个为1，中间对应sh和sw
 # strides相当于步伐 sh 代表纵向的步伐 sw代表横向的步伐
-convolution = tf.nn.conv2d(X, filter=filters_test, strides=[1, 2, 2, 1], padding='SAME')
+convolution = tf.nn.conv2d(X, filter=filters_test, strides=[1, 2, 2, 1], padding='SAME')#只有一个卷积层
 
 with tf.Session() as sess:
     output = sess.run(convolution, feed_dict={X: dataset})#运行完的featchure_map

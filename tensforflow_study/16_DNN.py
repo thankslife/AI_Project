@@ -82,8 +82,8 @@ batch_size = 50 #每一批次运行50个
 with tf.Session() as sess:
     init.run()
     for epoch in range(n_epochs):
-        for iterationo in range(mnist.train.num_examples//batch_size):
-            X_batch, y_batch = mnist.train.next_batch(batch_size)#每次遍历取一小批次数据
+        for iterationo in range(mnist.train.num_examples//batch_size):#总共多少条/批次大小
+            X_batch, y_batch = mnist.train.next_batch(batch_size)#每次传取一小批次数据
             sess.run(training_op, feed_dict={X: X_batch, y: y_batch})#传递参数
         acc_train = accuracy.eval(feed_dict={X: X_batch, y: y_batch})#每运行一次 看训练集准确率
         acc_test = accuracy.eval(feed_dict={X: mnist.test.images,#每运行一次 看测试集准确率
